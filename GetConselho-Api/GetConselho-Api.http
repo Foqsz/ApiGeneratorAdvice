@@ -1,0 +1,6 @@
+@GetConselho_Api_HostAddress = http://localhost:5245
+
+GET {{GetConselho_Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
