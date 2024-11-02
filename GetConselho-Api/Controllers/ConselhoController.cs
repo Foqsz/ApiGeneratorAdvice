@@ -16,16 +16,14 @@ public class ConselhoController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetConselho()
     {
-        using (var httpClient = new HttpClient())
-        {
-            var response = await _conselhoService.GetConselho();
+        var response = await _conselhoService.GetConselho();
 
-            if (response == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao obter o conselho.");
-            } 
-             
-            return StatusCode(StatusCodes.Status200OK, (new { Advice = response }));
+        if (response == null)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao obter o conselho.");
         }
+
+        return StatusCode(StatusCodes.Status200OK, (new { Advice = response }));
+
     }
 }
